@@ -36,13 +36,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonRecharger = new System.Windows.Forms.Button();
             this.buttonSupprimer = new System.Windows.Forms.Button();
             this.buttonAjouter = new System.Windows.Forms.Button();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxType = new System.Windows.Forms.TextBox();
-            this.textBoxPrix = new System.Windows.Forms.TextBox();
+            this.numericUpDownPrix = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPizza)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrix)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPizza
@@ -58,6 +60,7 @@
             this.dataGridViewPizza.ReadOnly = true;
             this.dataGridViewPizza.Size = new System.Drawing.Size(722, 255);
             this.dataGridViewPizza.TabIndex = 0;
+            this.dataGridViewPizza.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPizza_CellClick);
             // 
             // PizzaID
             // 
@@ -109,14 +112,25 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonRecharger);
             this.groupBox1.Controls.Add(this.buttonSupprimer);
             this.groupBox1.Controls.Add(this.buttonAjouter);
             this.groupBox1.Location = new System.Drawing.Point(338, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(214, 113);
+            this.groupBox1.Size = new System.Drawing.Size(400, 113);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opérations";
+            // 
+            // buttonRecharger
+            // 
+            this.buttonRecharger.Location = new System.Drawing.Point(210, 23);
+            this.buttonRecharger.Name = "buttonRecharger";
+            this.buttonRecharger.Size = new System.Drawing.Size(168, 31);
+            this.buttonRecharger.TabIndex = 2;
+            this.buttonRecharger.Text = "Liste des pizzas";
+            this.buttonRecharger.UseVisualStyleBackColor = true;
+            this.buttonRecharger.Click += new System.EventHandler(this.buttonRecharger_Click);
             // 
             // buttonSupprimer
             // 
@@ -126,6 +140,7 @@
             this.buttonSupprimer.TabIndex = 1;
             this.buttonSupprimer.Text = "Supprimer";
             this.buttonSupprimer.UseVisualStyleBackColor = true;
+            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
             // buttonAjouter
             // 
@@ -151,19 +166,19 @@
             this.textBoxType.Size = new System.Drawing.Size(141, 20);
             this.textBoxType.TabIndex = 6;
             // 
-            // textBoxPrix
+            // numericUpDownPrix
             // 
-            this.textBoxPrix.Location = new System.Drawing.Point(152, 107);
-            this.textBoxPrix.Name = "textBoxPrix";
-            this.textBoxPrix.Size = new System.Drawing.Size(141, 20);
-            this.textBoxPrix.TabIndex = 7;
+            this.numericUpDownPrix.Location = new System.Drawing.Point(152, 107);
+            this.numericUpDownPrix.Name = "numericUpDownPrix";
+            this.numericUpDownPrix.Size = new System.Drawing.Size(141, 20);
+            this.numericUpDownPrix.TabIndex = 7;
             // 
             // FormPizza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBoxPrix);
+            this.Controls.Add(this.numericUpDownPrix);
             this.Controls.Add(this.textBoxType);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.groupBox1);
@@ -174,8 +189,10 @@
             this.Name = "FormPizza";
             this.Text = "FormPizza";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormPizza_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPizza)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrix)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,6 +212,7 @@
         private System.Windows.Forms.Button buttonAjouter;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxType;
-        private System.Windows.Forms.TextBox textBoxPrix;
+        private System.Windows.Forms.Button buttonRecharger;
+        private System.Windows.Forms.NumericUpDown numericUpDownPrix;
     }
 }

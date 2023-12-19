@@ -40,9 +40,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxType = new System.Windows.Forms.TextBox();
+            this.textBoxIDP = new System.Windows.Forms.TextBox();
             this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.numericUpDownQuantite = new System.Windows.Forms.NumericUpDown();
+            this.buttonRecharger = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCommande)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).BeginInit();
@@ -63,6 +64,7 @@
             this.dataGridViewCommande.Name = "dataGridViewCommande";
             this.dataGridViewCommande.Size = new System.Drawing.Size(735, 222);
             this.dataGridViewCommande.TabIndex = 0;
+            this.dataGridViewCommande.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCommande_CellClick);
             // 
             // commandeID
             // 
@@ -93,10 +95,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonRecharger);
             this.groupBox1.Controls.Add(this.buttonModifier);
             this.groupBox1.Location = new System.Drawing.Point(441, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(214, 76);
+            this.groupBox1.Size = new System.Drawing.Size(212, 133);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opérations";
@@ -109,6 +112,7 @@
             this.buttonModifier.TabIndex = 1;
             this.buttonModifier.Text = "Modifier";
             this.buttonModifier.UseVisualStyleBackColor = true;
+            this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
             // 
             // label3
             // 
@@ -146,16 +150,16 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(81, 148);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 16);
+            this.label4.Size = new System.Drawing.Size(87, 16);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Type de pizza";
+            this.label4.Text = "ID de la pizza";
             // 
-            // textBoxType
+            // textBoxIDP
             // 
-            this.textBoxType.Location = new System.Drawing.Point(187, 147);
-            this.textBoxType.Name = "textBoxType";
-            this.textBoxType.Size = new System.Drawing.Size(183, 20);
-            this.textBoxType.TabIndex = 16;
+            this.textBoxIDP.Location = new System.Drawing.Point(187, 147);
+            this.textBoxIDP.Name = "textBoxIDP";
+            this.textBoxIDP.Size = new System.Drawing.Size(183, 20);
+            this.textBoxIDP.TabIndex = 16;
             // 
             // dateTimePickerDate
             // 
@@ -176,6 +180,16 @@
             this.numericUpDownQuantite.Size = new System.Drawing.Size(183, 20);
             this.numericUpDownQuantite.TabIndex = 18;
             // 
+            // buttonRecharger
+            // 
+            this.buttonRecharger.Location = new System.Drawing.Point(25, 76);
+            this.buttonRecharger.Name = "buttonRecharger";
+            this.buttonRecharger.Size = new System.Drawing.Size(168, 31);
+            this.buttonRecharger.TabIndex = 2;
+            this.buttonRecharger.Text = "Liste";
+            this.buttonRecharger.UseVisualStyleBackColor = true;
+            this.buttonRecharger.Click += new System.EventHandler(this.buttonRecharger_Click);
+            // 
             // FormCommande
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,7 +197,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.numericUpDownQuantite);
             this.Controls.Add(this.dateTimePickerDate);
-            this.Controls.Add(this.textBoxType);
+            this.Controls.Add(this.textBoxIDP);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.groupBox1);
@@ -194,6 +208,7 @@
             this.Name = "FormCommande";
             this.Text = "FormCommande";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormCommande_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCommande)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).EndInit();
@@ -216,8 +231,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxType;
+        private System.Windows.Forms.TextBox textBoxIDP;
         private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.NumericUpDown numericUpDownQuantite;
+        private System.Windows.Forms.Button buttonRecharger;
     }
 }

@@ -19,7 +19,7 @@ namespace Gestion_Pizza.Classes
         public string CommandeID {
             get { return commandeID; }
             set {
-                if (Regex.IsMatch(value, "[A-Za-z]{1}[0-9]{5}"))
+                if (value.Length == 6 && Regex.IsMatch(value, "[A-Za-z]{1}[0-9]{5}$"))
                 {
                     this.commandeID = value;
                 }

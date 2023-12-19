@@ -18,7 +18,7 @@ namespace Gestion_Pizza.Classes
         public string PizzaID {
             get { return pizzaID; }
             set {
-                if(Regex.IsMatch(value, "[0-9]{3}"))
+                if(value.Length == 3 && Regex.IsMatch(value, "[0-9]{3}$"))
                 {
                     this.pizzaID = value;
                 }

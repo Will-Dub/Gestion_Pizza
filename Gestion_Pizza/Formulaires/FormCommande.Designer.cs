@@ -187,7 +187,7 @@
             // 
             // unePizza
             // 
-            this.unePizza.HeaderText = "Type de pizza";
+            this.unePizza.HeaderText = "ID du type de pizza";
             this.unePizza.Name = "unePizza";
             // 
             // FormCommande

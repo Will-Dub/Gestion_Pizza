@@ -49,6 +49,10 @@ namespace Gestion_Pizza.Classes
         }
 
         //Méthodes
+        /// <summary>
+        /// Calcul le prix total de la commande avec taxes
+        /// </summary>
+        /// <returns></returns>
         public float calculer_prix_commande()
         {
             if(UnePizza != null)

@@ -46,6 +46,12 @@ namespace Gestion_Pizza.Classes
         }
 
         //Méthode
+        /// <summary>
+        /// Constructeur de la classe Pizza
+        /// </summary>
+        /// <param name="p_pizzald"></param>
+        /// <param name="p_typePizza"></param>
+        /// <param name="p_prixPizza"></param>
         public Pizza(string p_pizzald="!", string p_typePizza="!", int p_prixPizza=0)
         {
             this.pizzaID = p_pizzald;

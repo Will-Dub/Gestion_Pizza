@@ -9,6 +9,7 @@ namespace Gestion_Pizza_XUNIT.Models
 {
     public class OutilsClassShould
     {
+        // Fonction pour ajouter une commande facillement
         public void ajout_commande(string p_commandeId, int p_quantite)
         {
             Gestion_Pizza.Classes.Commande commande = new Gestion_Pizza.Classes.Commande();

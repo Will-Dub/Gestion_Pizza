@@ -26,6 +26,11 @@ namespace Gestion_Pizza.Classes
         }
 
         // Méthodes
+        /// <summary>
+        /// Recherche les commandes ayant une quantite plus haute que p_quantite
+        /// </summary>
+        /// <param name="p_quantite"></param>
+        /// <returns></returns>
         public static List<Commande> chercher_commande(int p_quantite)
         {
             List<Commande> liste_commande_valide = new List<Commande>();

@@ -31,6 +31,9 @@ namespace Gestion_Pizza.Formulaires
         {
             using (cnx = new SqlConnection())
             {
+                //Met a jour le datagrid view
+
+                //Setup la conncection et la commande
                 cnx.ConnectionString = ConfigurationManager.ConnectionStrings["cnxSqlServer"].ConnectionString;
                 command = new SqlCommand("Select * from Commandes", cnx);
 
@@ -66,7 +69,9 @@ namespace Gestion_Pizza.Formulaires
 
         private void buttonRecharger_Click(object sender, EventArgs e)
         {
+            //Enleve les donné de la datagridview
             dataGridViewCommande.Rows.Clear();
+            //Recharge la datagrid view
             FormCommande_Load(sender, e);
 
             textBoxID.Select();
@@ -77,6 +82,7 @@ namespace Gestion_Pizza.Formulaires
         {
             using (cnx = new SqlConnection())
             {
+                //Setup la connection et la commande
                 int quantite_t = int.Parse(numericUpDownQuantite.Value.ToString());
                 DateTime date_t = dateTimePickerDate.Value;
                 string commandeID_t = textBoxID.Text;
@@ -138,6 +144,7 @@ namespace Gestion_Pizza.Formulaires
             {
                 this.textBoxID.Text = dataGridViewCommande.Rows[position].Cells[0].Value.ToString();
                 this.numericUpDownQuantite.Value = int.Parse(dataGridViewCommande.Rows[position].Cells[1].Value.ToString());
+                //this.dateTimePickerDate.Value = DateTime.Parse(dataGridViewCommande.Rows[position].Cells[1].Value.ToString());
                 this.textBoxIDP.Text = dataGridViewCommande.Rows[position].Cells[3].Value.ToString();
             }
         }

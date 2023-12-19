@@ -20,7 +20,6 @@ namespace Gestion_Pizza.Formulaires
         SqlConnection cnx;
         SqlCommand command;
         SqlDataReader resultat;
-        String Query;
         int position = -1;
   
 
@@ -34,8 +33,7 @@ namespace Gestion_Pizza.Formulaires
             using(cnx = new SqlConnection())
             {
                 cnx.ConnectionString = ConfigurationManager.ConnectionStrings["cnxSqlServer"].ConnectionString;
-                Query = "Select * from Pizzas";
-                command = new SqlCommand(Query, cnx);
+                command = new SqlCommand("Select * from Pizzas", cnx);
 
                 try
                 {
@@ -58,6 +56,7 @@ namespace Gestion_Pizza.Formulaires
                 }
                 catch (Exception ex)
                 {
+                    //Erreur
                     MessageBox.Show(ex.Message);
                 }
                 finally
@@ -72,7 +71,10 @@ namespace Gestion_Pizza.Formulaires
 
         private void buttonRecharger_Click(object sender, EventArgs e)
         {
+            //Enlever les données du datagridview
             dataGridViewPizza.Rows.Clear();
+
+            //Met les valeurs de la base de données
             FormPizza_Load(sender, e);
 
             textBoxID.Select();
@@ -94,6 +96,7 @@ namespace Gestion_Pizza.Formulaires
 
                 if (tempPizza.PizzaID == pizzaID && tempPizza.PrixPizza == prixPizza && tempPizza.TypePizza == typePizza)
                 {
+                    //Set up la connection et la commande
                     cnx.ConnectionString = ConfigurationManager.ConnectionStrings["cnxSqlServer"].ConnectionString;
                     command.Connection = cnx;
                     command.CommandText = "INSERT INTO Pizzas (PizzaID,Type_Pizza,Prix_Pizza) values (@Pid,@Ptype,@Pprix);";
@@ -103,6 +106,7 @@ namespace Gestion_Pizza.Formulaires
 
                     try
                     {
+                        //Execute la commande
                         cnx.Open();
                         int nombreLignes = command.ExecuteNonQuery();
                         if (nombreLignes != 1)
@@ -126,6 +130,7 @@ namespace Gestion_Pizza.Formulaires
                 }
                 else
                 {
+                    //Messages d'erreurs
                     if(tempPizza.PizzaID != pizzaID)
                     {
                         MessageBox.Show("ID de la pizza invalide");
@@ -147,6 +152,7 @@ namespace Gestion_Pizza.Formulaires
         {
             using (cnx = new SqlConnection())
             {
+                //Set up la connection et la commande
                 cnx.ConnectionString = ConfigurationManager.ConnectionStrings["cnxSqlServer"].ConnectionString;
                 cnx.Open();
                 SqlCommand commande = new SqlCommand();
@@ -155,24 +161,35 @@ namespace Gestion_Pizza.Formulaires
                 commande.CommandText = "Delete From Pizzas where PizzaID=@PID";
                 commande.Parameters.AddWithValue("@PID", pizzaID);
 
+                //Demande l'utilisateur son choix
                 DialogResult dialogresult = MessageBox.Show("Voulez-vous supprimer la pizza?", "Confirmation", MessageBoxButtons.YesNo);
+                //Si il répond oui
                 if (dialogresult == DialogResult.Yes)
                 {
                     //Rétablir la connexion avec le serveur si elle est fermée   
-                    commande.ExecuteNonQuery();
-                        
-                    cnx.Close();
-                    // Réinitialiser les textBoxs
-                    textBoxID.Text = "";
-                    numericUpDownPrix.Value = 0;
-                    textBoxType.Text = "";
-                    buttonRecharger_Click(sender, e);
-                    foreach(Classes.Pizza pizza in Classes.Outils.List_pizza)
+                    try
                     {
-                        if(pizza.PizzaID == pizzaID)
+                        commande.ExecuteNonQuery();
+                        // Réinitialiser les textBoxs
+                        textBoxID.Text = "";
+                        numericUpDownPrix.Value = 0;
+                        textBoxType.Text = "";
+                        buttonRecharger_Click(sender, e);
+                        foreach (Classes.Pizza pizza in Classes.Outils.List_pizza)
                         {
-                            Classes.Outils.List_pizza.Remove(pizza);
+                            if (pizza.PizzaID == pizzaID)
+                            {
+                                Classes.Outils.List_pizza.Remove(pizza);
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("La pizza à été choisi dans une commande");
+                    }
+                    finally
+                    {
+                        cnx.Close();
                     }
                 }
             }
@@ -180,12 +197,14 @@ namespace Gestion_Pizza.Formulaires
 
         private void dataGridViewPizza_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Cherche la postion du curseur
             position = dataGridViewPizza.CurrentRow.Index;
+            //Change les données
             if (dataGridViewPizza.RowCount - 1 != 0)
             {
                 this.textBoxID.Text = dataGridViewPizza.Rows[position].Cells[0].Value.ToString();
-                this.numericUpDownPrix.Value = int.Parse(dataGridViewPizza.Rows[position].Cells[1].Value.ToString());
-                this.textBoxType.Text = dataGridViewPizza.Rows[position].Cells[2].Value.ToString();
+                this.textBoxType.Text = dataGridViewPizza.Rows[position].Cells[1].Value.ToString();
+                this.numericUpDownPrix.Value = int.Parse(dataGridViewPizza.Rows[position].Cells[2].Value.ToString());
             }
         }
     }

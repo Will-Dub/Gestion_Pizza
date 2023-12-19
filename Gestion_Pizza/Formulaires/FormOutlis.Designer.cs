@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridViewOutils = new System.Windows.Forms.DataGridView();
+            this.commandeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRechercher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
-            this.commandeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOutils)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +52,18 @@
             this.dataGridViewOutils.Size = new System.Drawing.Size(721, 252);
             this.dataGridViewOutils.TabIndex = 0;
             // 
+            // commandeID
+            // 
+            this.commandeID.HeaderText = "ID de la commande trouvé";
+            this.commandeID.Name = "commandeID";
+            this.commandeID.ReadOnly = true;
+            // 
+            // dateCommande
+            // 
+            this.dateCommande.HeaderText = "Date de la commande";
+            this.dateCommande.Name = "dateCommande";
+            this.dateCommande.ReadOnly = true;
+            // 
             // buttonRechercher
             // 
             this.buttonRechercher.Location = new System.Drawing.Point(42, 65);
@@ -60,6 +72,7 @@
             this.buttonRechercher.TabIndex = 0;
             this.buttonRechercher.Text = "Rechercher";
             this.buttonRechercher.UseVisualStyleBackColor = true;
+            this.buttonRechercher.Click += new System.EventHandler(this.buttonRechercher_Click);
             // 
             // label1
             // 
@@ -77,18 +90,6 @@
             this.dateTimePickerDate.Name = "dateTimePickerDate";
             this.dateTimePickerDate.Size = new System.Drawing.Size(200, 20);
             this.dateTimePickerDate.TabIndex = 9;
-            // 
-            // commandeID
-            // 
-            this.commandeID.HeaderText = "ID de la commande trouvé";
-            this.commandeID.Name = "commandeID";
-            this.commandeID.ReadOnly = true;
-            // 
-            // dateCommande
-            // 
-            this.dateCommande.HeaderText = "Date de la commande";
-            this.dateCommande.Name = "dateCommande";
-            this.dateCommande.ReadOnly = true;
             // 
             // FormOutlis
             // 

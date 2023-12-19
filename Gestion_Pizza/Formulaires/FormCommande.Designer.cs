@@ -29,12 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridViewCommande = new System.Windows.Forms.DataGridView();
-            this.commandeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unePizza = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonRecharger = new System.Windows.Forms.Button();
             this.buttonModifier = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +40,10 @@
             this.textBoxIDP = new System.Windows.Forms.TextBox();
             this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.numericUpDownQuantite = new System.Windows.Forms.NumericUpDown();
-            this.buttonRecharger = new System.Windows.Forms.Button();
+            this.commandeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantite = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateCommande = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unePizza = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCommande)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQuantite)).BeginInit();
@@ -57,34 +57,14 @@
             this.dataGridViewCommande.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCommande.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.commandeID,
-            this.dateCommande,
             this.quantite,
+            this.dateCommande,
             this.unePizza});
             this.dataGridViewCommande.Location = new System.Drawing.Point(32, 198);
             this.dataGridViewCommande.Name = "dataGridViewCommande";
             this.dataGridViewCommande.Size = new System.Drawing.Size(735, 222);
             this.dataGridViewCommande.TabIndex = 0;
             this.dataGridViewCommande.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCommande_CellClick);
-            // 
-            // commandeID
-            // 
-            this.commandeID.HeaderText = "ID de la commande";
-            this.commandeID.Name = "commandeID";
-            // 
-            // dateCommande
-            // 
-            this.dateCommande.HeaderText = "Date de la commande";
-            this.dateCommande.Name = "dateCommande";
-            // 
-            // quantite
-            // 
-            this.quantite.HeaderText = "Quantité";
-            this.quantite.Name = "quantite";
-            // 
-            // unePizza
-            // 
-            this.unePizza.HeaderText = "Type de pizza";
-            this.unePizza.Name = "unePizza";
             // 
             // textBoxID
             // 
@@ -103,6 +83,16 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opérations";
+            // 
+            // buttonRecharger
+            // 
+            this.buttonRecharger.Location = new System.Drawing.Point(25, 76);
+            this.buttonRecharger.Name = "buttonRecharger";
+            this.buttonRecharger.Size = new System.Drawing.Size(168, 31);
+            this.buttonRecharger.TabIndex = 2;
+            this.buttonRecharger.Text = "Liste";
+            this.buttonRecharger.UseVisualStyleBackColor = true;
+            this.buttonRecharger.Click += new System.EventHandler(this.buttonRecharger_Click);
             // 
             // buttonModifier
             // 
@@ -180,15 +170,25 @@
             this.numericUpDownQuantite.Size = new System.Drawing.Size(183, 20);
             this.numericUpDownQuantite.TabIndex = 18;
             // 
-            // buttonRecharger
+            // commandeID
             // 
-            this.buttonRecharger.Location = new System.Drawing.Point(25, 76);
-            this.buttonRecharger.Name = "buttonRecharger";
-            this.buttonRecharger.Size = new System.Drawing.Size(168, 31);
-            this.buttonRecharger.TabIndex = 2;
-            this.buttonRecharger.Text = "Liste";
-            this.buttonRecharger.UseVisualStyleBackColor = true;
-            this.buttonRecharger.Click += new System.EventHandler(this.buttonRecharger_Click);
+            this.commandeID.HeaderText = "ID de la commande";
+            this.commandeID.Name = "commandeID";
+            // 
+            // quantite
+            // 
+            this.quantite.HeaderText = "Quantité";
+            this.quantite.Name = "quantite";
+            // 
+            // dateCommande
+            // 
+            this.dateCommande.HeaderText = "Date de la commande";
+            this.dateCommande.Name = "dateCommande";
+            // 
+            // unePizza
+            // 
+            this.unePizza.HeaderText = "Type de pizza";
+            this.unePizza.Name = "unePizza";
             // 
             // FormCommande
             // 
@@ -220,10 +220,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commandeID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateCommande;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unePizza;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonModifier;
@@ -235,5 +231,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.NumericUpDown numericUpDownQuantite;
         private System.Windows.Forms.Button buttonRecharger;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commandeID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantite;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateCommande;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unePizza;
     }
 }

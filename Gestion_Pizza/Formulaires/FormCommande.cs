@@ -20,7 +20,6 @@ namespace Gestion_Pizza.Formulaires
         SqlConnection cnx;
         SqlCommand command;
         SqlDataReader resultat;
-        String Query;
         int position = -1;
 
         public FormCommande()
@@ -33,8 +32,7 @@ namespace Gestion_Pizza.Formulaires
             using (cnx = new SqlConnection())
             {
                 cnx.ConnectionString = ConfigurationManager.ConnectionStrings["cnxSqlServer"].ConnectionString;
-                Query = "Select * from Commandes";
-                command = new SqlCommand(Query, cnx);
+                command = new SqlCommand("Select * from Commandes", cnx);
 
                 try
                 {
@@ -97,7 +95,7 @@ namespace Gestion_Pizza.Formulaires
                     }
                 }
 
-                if (commande_temp.CommandeID == commandeID_t && commande_temp.DateCommande == date_t && commande_temp.Quantite == quantite_t && commande_temp.UnePizza.PizzaID == pizzaID_t)
+                if (commande_temp.CommandeID == commandeID_t && commande_temp.DateCommande == date_t && commande_temp.Quantite == quantite_t)
                 {
                     cnx.ConnectionString = ConfigurationManager.ConnectionStrings["cnxSqlServer"].ConnectionString;
                     command.Connection = cnx;
@@ -124,7 +122,6 @@ namespace Gestion_Pizza.Formulaires
                         buttonRecharger_Click(sender, e);
                         // reinitialiser les textBox
                         numericUpDownQuantite.Value = 0;
-                        dateTimePickerDate.Value = default(DateTime);
                         textBoxID.Text = "";
                         textBoxIDP.Text = "";
                         cnx.Close();
@@ -140,7 +137,7 @@ namespace Gestion_Pizza.Formulaires
             if (dataGridViewCommande.RowCount - 1 != 0)
             {
                 this.textBoxID.Text = dataGridViewCommande.Rows[position].Cells[0].Value.ToString();
-                this.numericUpDownQuantite.Value = int.Parse(dataGridViewCommande.Rows[position].Cells[2].Value.ToString());
+                this.numericUpDownQuantite.Value = int.Parse(dataGridViewCommande.Rows[position].Cells[1].Value.ToString());
                 this.textBoxIDP.Text = dataGridViewCommande.Rows[position].Cells[3].Value.ToString();
             }
         }

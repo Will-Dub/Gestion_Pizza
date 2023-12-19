@@ -41,7 +41,7 @@ namespace Gestion_Pizza.Classes
         }
 
         // Constructeur
-        public Commande(string p_commandeId = "A00000", DateTime p_dateCommane = default(DateTime), int p_quantite = 0)
+        public Commande(string p_commandeId = "000000", DateTime p_dateCommane = default(DateTime), int p_quantite = -1)
         {
             this.commandeID = p_commandeId;
             this.dateCommande = p_dateCommane;
